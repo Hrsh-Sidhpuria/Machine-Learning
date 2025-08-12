@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logistic Regression - What, Why, When, How</title>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #1f1c2c, #928dab);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #fff;
+    }
+    .container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+        max-width: 900px;
+        width: 95%;
+        backdrop-filter: blur(15px);
+        animation: fadeIn 1s ease-in-out;
+    }
+    h1 {
+        margin-bottom: 25px;
+        font-size: 3em;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+    .btn-group {
+        margin-bottom: 25px;
+    }
+    .btn-group button {
+        background: linear-gradient(to right, #ff9966, #ff5e62);
+        border: none;
+        padding: 14px 28px;
+        margin: 5px;
+        border-radius: 50px;
+        font-size: 1.1em;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    .btn-group button:hover {
+        background: linear-gradient(to right, #ff5e62, #ff9966);
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    .output {
+        margin-top: 20px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        min-height: 220px;
+        font-size: 1.1em;
+        line-height: 1.8;
+        text-align: left;
+        white-space: pre-line;
+        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Logistic Regression</h1>
+        <div class="btn-group">
+            <button onclick="showText('what')">What?</button>
+            <button onclick="showText('why')">Why?</button>
+            <button onclick="showText('when')">When?</button>
+            <button onclick="showText('how')">How?</button>
+        </div>
+        <div class="output" id="output">Click a button to explore detailed insights about Logistic Regression.</div>
+    </div>
+
+<script>
+    function showText(type) {
+        let text = '';
+        if (type === 'what') {
+            text = `Logistic Regression is a supervised machine learning algorithm primarily used for binary classification problems, where the outcome variable can take only two possible types (e.g., success/failure, yes/no, 0/1). Unlike linear regression, which predicts continuous values, logistic regression predicts the probability of a certain class occurring. This is achieved using the logistic (sigmoid) function, which maps any real-valued number into a range between 0 and 1, making it ideal for probability estimation.\n\nExample: Predicting whether a student passes (1) or fails (0) an exam based on study hours, attendance percentage, and past performance.`;
+        } else if (type === 'why') {
+            text = `Logistic Regression is used when the dependent variable is categorical, particularly in classification scenarios. It is highly interpretable, computationally efficient, and works well when the relationship between independent variables and the dependent variable is approximately linear in the log-odds space. Its probability output is valuable in decision-making processes where confidence in classification matters.\n\nApplications include:\n- Email spam detection (spam or not spam)\n- Medical diagnosis (disease present or absent)\n- Credit scoring (default risk or not)\n- Marketing (likely to buy a product or not)\n\nExample: In healthcare, logistic regression can estimate the likelihood that a patient will develop heart disease based on factors like age, cholesterol level, blood pressure, and lifestyle habits.`;
+        } else if (type === 'when') {
+            text = `Use Logistic Regression when:\n- Your target variable is binary or categorical.\n- You want a simple, interpretable model with probability outputs.\n- The relationship between predictors and the log-odds of the outcome is approximately linear.\n- The dataset size is moderate, and interpretability is more important than capturing complex patterns.\n\nExample: When building a system to predict if a bank customer will default on a loan, logistic regression is a great choice if you need both a probability estimate and clear reasoning behind predictions.`;
+        } else if (type === 'how') {
+            text = `Logistic Regression operates by fitting a model where the log-odds of the probability of the target being 1 is modeled as a linear combination of the input features. The core equation is:\n\nlog(p / (1 - p)) = b0 + b1*x1 + b2*x2 + ...\n\nWhere:\n- p is the probability that the target variable equals 1\n- b0 is the intercept\n- b1, b2, ... are coefficients\n\nThe logistic function transforms this linear equation into a probability between 0 and 1:\n\nP(Y=1) = 1 / (1 + e^(-z))\n\nModel parameters are estimated using Maximum Likelihood Estimation (MLE), which finds the coefficients that make the observed data most probable. Once trained, the model outputs probabilities, which can be converted to binary classes using a threshold (commonly 0.5).`;
+        }
+        document.getElementById('output').innerText = text;
+    }
+</script>
+</body>
+</html>
